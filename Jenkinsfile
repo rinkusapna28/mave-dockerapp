@@ -13,7 +13,7 @@ pipeline {
         }
 		stage('build Docker Image') { 
             steps {
-                sh 'docker build -t srinku28/mavenappconainer:0.0.2 .'
+                sh 'docker build -t srinku28/mavenappconainer:0.0.3 .'
             }
         }
 		stage('Push Docker Image') { 
@@ -28,8 +28,9 @@ pipeline {
             steps {
                 sshagent(['jenkinsssh']) {
 		     sh 'ssh -o StrictHostKeyChecking=no root@172.16.4.149 apt-get update'
-             sh 'ssh -o StrictHostKeyChecking=no root@172.16.4.149 apt-get install docker.io -y'			 
-	         sh 'ssh -o StrictHostKeyChecking=no root@172.16.4.149 docker run -it --rm -d -p 8087:8080 --name mavendeclerative srinku28/mavenappconainer:0.0.2'
+             sh 'ssh -o StrictHostKeyChecking=no root@172.16.4.149 apt-get install docker.io -y'
+             sh 'docker rm mavendeclerative'
+	         sh 'ssh -o StrictHostKeyChecking=no root@172.16.4.149 docker run  -d -p 8087:8080 --name mavendeclerative srinku28/mavenappconainer:0.0.2'
             }
           }
         }
