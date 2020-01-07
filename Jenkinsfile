@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('SCM Checkout') { 
             steps {
-                git credentialsId: '07b96208-9734-4475-8f43-f9fa98ff1fa7', url: 'https://github.com/ValaxyTech/hello-world.git'
+                git credentialsId: '07b96208-9734-4475-8f43-f9fa98ff1fa7', url: 'https://github.com/rinkusapna28/mave-dockerapp.git'
             }
         }
 		stage('build package') { 
