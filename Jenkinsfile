@@ -29,7 +29,7 @@ pipeline {
                 sshagent(['jenkinsssh']) {
 		     sh 'ssh -o StrictHostKeyChecking=no root@172.16.4.149 apt-get update'
              sh 'ssh -o StrictHostKeyChecking=no root@172.16.4.149 apt-get install docker.io -y'			 
-	         sh 'ssh -o StrictHostKeyChecking=no root@172.16.4.149 docker run -d -p 8087:8080 --name mavendeclerative srinku28/mavenappconainer:0.0.2'
+	         sh 'ssh -o StrictHostKeyChecking=no root@172.16.4.149 docker run -it --rm -d -p 8087:8080 --name mavendeclerative srinku28/mavenappconainer:0.0.2'
             }
           }
         }
