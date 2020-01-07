@@ -22,7 +22,7 @@ pipeline {
          sh "docker login -u srinku28 -p ${dockerpasswd}"
 		 sh 'docker push srinku28/mavenappconainer:0.0.2'
             }
-			
+		  }	
         }
 		stage('Run container on Dev server') { 
             steps {
@@ -34,5 +34,4 @@ pipeline {
           }
         }
 	}
-   }
 }
