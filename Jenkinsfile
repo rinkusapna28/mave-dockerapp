@@ -20,8 +20,9 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'docker-pwd3', variable: 'dockerpasswd')]) {
          sh "docker login -u srinku28 -p ${dockerpasswd}"
+		 sh 'docker push srinku28/mavenappconainer:0.0.2'
             }
-			sh 'docker push srinku28/mavenappconainer:0.0.2'
+			
         }
 		stage('Run container on Dev server') { 
             steps {
